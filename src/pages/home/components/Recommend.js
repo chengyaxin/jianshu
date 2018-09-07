@@ -1,9 +1,24 @@
-import React, { Component } from 'react'
-class Recommend extends Component {
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { RecommendWrapper,RecommendItem } from '../style.js'
+class Recommend extends PureComponent {
 	render(){
+		const {list}  = this.props;
 		return (
-				<div>Recommend</div>
+				<RecommendWrapper>
+					{list.map((item)=>{
+						return (
+							<RecommendItem imgUrl={item.get("imgUrl")} key={item.get("id")}/>
+						)
+					})}
+				</RecommendWrapper>
 			)
 	}
 }
-export default Recommend
+const mapState = (state) => ({
+	list:state.get("home").get("recommendList")
+})
+const mapDispatch = (dispatch) =>({
+
+})
+export default connect(mapState,mapDispatch)(Recommend)

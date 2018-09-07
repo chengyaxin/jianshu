@@ -11,15 +11,14 @@ class App extends Component {
   	//exact表示只有地址栏的路径与写的路径完全一样时才显示对应内容
     return (
     	<Provider store={store}>
-      		<div>
-      			<Header />
+      			
 	      		<BrowserRouter>
 		      		<div>
+                <Header />
 		      			<Route path="/" exact component={Home}></Route>
 		      			<Route path="/detail" exact component={Detail}></Route>
 		      		</div>
 	      		</BrowserRouter>
-      		</div>
       	</Provider>
     );
   }
